@@ -1,0 +1,263 @@
+*{
+    margin: 0;
+    padding:0;
+}
+#first{
+   background-color:#87c2f3 ;
+   padding: 10px;
+   text-align: center;
+   
+}
+#icons{
+    display:flex;
+    justify-content: space-between;
+    margin:15px 15px 10px 5px;
+    padding:0px 20px 0px 20px ; 
+}
+#search-panel{/*to allow the search bar accept icon inside*/
+    position: relative;
+    width:700px;
+}
+#search-bar{
+    border-radius: 25px;
+    padding: 10px;
+    border: 1px solid grey;
+    width: 700px;
+
+}
+button i{
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+#search-panel i {
+    position :absolute;
+    top:40%;/*vertical distance*/
+    right:10px;/*alignment of icon*/
+    color:grey;
+    transform: translateY(-30%);
+    
+}
+
+#side-icons{
+    display:flex ;
+    justify-content: space-between;
+    align-items:center ;
+    gap:30px;
+    padding: 10px;
+}
+.user{
+    font-size: 1.8rem;
+}
+/* Modal Background */
+#user-modal {
+    display: none; /* Hidden initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it's above everything else */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Modal Content */
+  #user-modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Close Button */
+  #close-user-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+  }
+  
+.user-bag{
+    font-size: 1.8rem;
+}
+#nav-links{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    border-bottom: 1px solid rgb(212, 211, 211);
+
+}
+#nav-links a{
+      text-decoration:none;
+      padding:10px;
+      color: black;
+      position:relative;
+      overflow: hidden;
+      display: inline-block;
+      font-weight:bold ;
+}
+#nav-links a:hover{
+    color:red;
+}
+.shutter-new{
+    position: fixed;
+    top:0;
+    left:100%;
+    width:70%;
+    height:100%;
+    background:rgb(233, 179, 179);
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transition:transform 0.5s ease-in-out, left 0.5s ease-in-out ;
+    z-index: 10;
+}
+.shutter-new.open{
+    left:30%;
+}
+.new-content{
+    text-align: center;
+}
+.new-content a{
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    font-size: 18px;
+}
+.new-content a:hover{
+    text-decoration:solid;
+    color:rgb(228, 166, 112)
+}
+h2{
+    margin: 20px 0px 0px 10px;
+    padding:5px;
+}
+#portfolio{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap:10px;
+    margin:20px;
+    text-align: center;
+    color:black;
+
+}
+ #portfolio img{
+    width:200px;
+    height:250px;
+    border: 2px solid rgb(197, 181, 211);
+    box-shadow: 2px 2px lightblue;
+    cursor: pointer;
+}
+#portfolio a{
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    color:black;
+}
+article{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:15px;
+    margin: 50px 20px 20px 20px;
+    background-color:#BDC8D4;
+    border:2px solid #7eabdb;
+    box-shadow: 2px 2px #7fb4ec;
+} 
+article img{
+    width:400px;
+    height:600px;
+
+}
+article>div{
+    text-align: center;
+    align-content: center; 
+}
+.winter{
+    font-family: sofia,sans-serif;
+    font-size:4rem;
+}
+#cont{
+    background-color:rgb(171, 138, 202);
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:15px;
+    margin: 10px 20px 20px 20px;
+    border:2px solid #7eabdb;
+    box-shadow: 2px 2px #7fb4ec;
+} 
+.boxes{
+    width:400px;
+    height:500px;
+    align-content: center;
+    text-align: center;
+   /* background-color: rgb(167, 97, 233);*/
+    background-image:url("../Assests/Images/project-xv.jpg");
+    background-position: center;/*to cover the whole bacground*/
+    background-size: cover;
+    background-repeat: no-repeat;/*prevents multiple times*/
+} 
+ aside h3{
+    font-family: sofia,san-serif;
+    font-size: 3rem;
+}
+#with-price{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:15px;
+    margin: 50px 20px 20px 20px;
+    background-color:#ebf0f5;
+    border:2px solid #7eabdb;
+    box-shadow: 2px 2px #7fb4ec;
+
+}
+#with-price img{
+    width:300px;
+    height:400px;
+
+} 
+#with-price :nth-child(1){
+   align-content: center; 
+   text-align: center;
+   font-weight: bolder;
+   cursor:pointer;
+}
+h1{
+    font-family: sofia,sans-serif;
+    font-size: 3rem;
+}
+#with-price button{
+      width:200px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: white;
+}
+#with-price div p{
+    
+    text-align: center;
+}
+figure{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding:20px;
+    gap:15px;
+    margin: 50px 20px 20px 20px;
+    background-color:#fdfeff;
+    border:2px solid white;
+    box-shadow: 2px 2px #d1dde9;
+
+}
+figure img{
+    width:800px;
+    height:500px;
+    cursor: pointer;
+    
+}
