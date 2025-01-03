@@ -18,7 +18,7 @@
     position: relative;
     width:700px;
 }
-#search-bar{
+.search-bar{
     border-radius: 25px;
     padding: 10px;
     border: 1px solid grey;
@@ -40,17 +40,17 @@ button i{
 
 #side-icons{
     display:flex ;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items:center ;
     gap:30px;
     padding: 10px;
 }
-.user{
+.user , .user-cart .user-wishlist{
     font-size: 1.8rem;
 }
 /* Modal Background */
 #user-modal {
-    display: none; /* Hidden initially */
+    
     position: fixed;
     top: 0;
     left: 0;
@@ -83,10 +83,6 @@ button i{
     cursor: pointer;
     color: #333;
   }
-  
-.user-bag{
-    font-size: 1.8rem;
-}
 #nav-links{
     display: flex;
     justify-content: space-between;
