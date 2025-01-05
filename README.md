@@ -1,6 +1,6 @@
 # Project-I
 # Home Page
-![All pages one place] (![alt text](![alt text](<Screenshot (28).png>))
+![All pages one place] (![alt text](<Screenshot (28).png>))
 
 #### Here is the home page where all the icons are available for signup ,wishlist and cart.
 
