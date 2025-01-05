@@ -19,7 +19,7 @@
       <div id="first">
         <p>
           Update your closet with deals upto 70% off.<span>
-            <a href="" style="font-weight: bold">Get Winter Style </a></span
+            <a href="product.html" style="font-weight: bold">Get Winter Style </a></span
           >
         </p>
       </div>
@@ -47,16 +47,27 @@
               <span id="close-user-modal">&times;</span>
               <h2>Please Sign-in</h2>
               <div id="btn-area">
-                <button>
-                  <i class="fa-solid fa-shoe-prints"></i>Sign in with Zappos
-                </button>
-                <button>Sign in with Amazon</button>
-                <button>Sign in with Google</button>
-                <p>OR</p>
-                <button>Create your Zappos Account</button>
+                <button class="login"><i class="fa-solid fa-shoe-prints"></i>Sign in with Zappos</button>
+                <button class="login"><i class="fa-brands fa-amazon"></i>Sign in with Amazon</button>
+                <button class="login"><i class="fa-brands fa-google"></i>Sign in with Google</button>
+                <button id="signup">Create your Zappos Account</button>
               </div>
+              <div id="policies">
+                <h4>By logging in with Amazon, you may be eligible for additional Prime benefits like FREE Upgraded Shipping. Then, join Zappos VIP for additional Prime-linked VIP perks:</h4>
+                  <ul>
+                    <li>If you are an Amazon Prime Member, sign in with Amazon to qualify for free upgraded shipping!
+                    </li>
+                    <li>Get FREE Expedited Shipping</li>
+                    <li>Earn 2 Points for Every $1 Spent</li>
+                    <li>Receive Bonus Points on Select Brands</li>
+                    <li>Redeem Points for VIP Codes</li>
+                  </ul>
+              </div>
+              <p>By signing in, you agree to Zappos</p>
+              <p> Terms and Conditions and Privacy Policy.</p>
             </div>
           </div>
+          
           <a href="wishlist.html" class="user-wishlist"
           ><i class="fa-solid fa-heart"></i
         ></a>
@@ -67,28 +78,77 @@
       </div>
       <div id="nav-links">
         <div id="left">
-          <a href="#" id="nnew">New</a>
-          <div class="shutter-new">
-            <div id="close-shutter">&times;</div>
-            <div class="new-content">
+          <a href="#" id="newshutter">New</a>
+          <div id="new-shuttering">
               <h1>New by Category</h1>
-              <a href="#">Shoes</a>
-              <a href="#">Clothing</a>
-              <a href="#">Bags</a>
-              <a href="#">Accesssories</a>
-              <a href="#">Shop All New</a>
-            </div>
+              <a href="product.html">Shoes</a>
+              <a href="product.html">Clothing</a>
+              <a href="product.html">Bags</a>
+              <a href="product.html">Accesssories</a>
+              <a href="product.html">Shop All New Items</a>
           </div>
-          <a href="">Women</a>
-          <a href="">Men</a>
-          <a href="">Kids</a>
-          <a href="">Collection</a>
-          <a href="">Brands</a>
+          <a href="" id="womenshutter">Women</a>
+          <div id="women-shuttering">
+            <h1>Women's Fashion Type</h1>
+            <a href="product.html"> Women Shoes</a>
+            <a href="product.html"> Women Clothings</a>
+            <a href="product.html"> Women Hand Bags & Clutches</a>
+            <a href="product.html"> Women Accessories</a>
+            <a href="product.html">Shop All New  Women Styles</a>
+          </div>
+          <a href="" id="menshutter">Men</a>
+          <div id="men-shuttering">
+            <h1>Men's Fashion Type</h1>
+            <a href="product.html"> Men Shoes</a>
+            <a href="product.html"> Men Clothings</a>
+            <a href="product.html"> Men's Purses </a>
+            <a href="product.html"> Men Accessories</a>
+            <a href="product.html">Shop All New  Men Styles</a>
+          </div>
+          <a href="" id="kidsshutter">Kids</a>
+          <div id="kids-shuttering">
+            <h1>Kids Cute Collection</h1>
+            <a href="product.html"> Kids Shoes</a>
+            <a href="product.html"> Kids Clothings</a>
+            <a href="product.html"> Kids Bags </a>
+            <a href="product.html"> Kids Accessories</a>
+            <a href="product.html">Shop All New Kids Styles</a>
+          </div>
+          <a href="" id="collectionshutter">Collection</a>
+            <div id="collection-shuttering">
+                 <div>
+                  <h3>Featured Shops</h3>
+                  <a href="product.html">The Outdoor Shop</a>
+                  <a href="product.html">The Running Shops</a>
+                  <a href="product.html">The Wedding Shop</a>
+                  <a href="product.html">The Michelin Shops</a>
+                 </div>
+                 <div>
+                  <h3>The Style Room</h3>
+                  <a href="product.html">Hunter</a>
+                  <a href="product.html">Footwear Edit</a>
+                  <a href="product.html">Pretty Extravaganza</a>
+                  <a href="product.html">Steve Madden</a>
+                 </div>
+            </div>
+          <a href="" id="brandshutter">Brands</a>
+          <div id="brand-shuttering">
+            <h1>You Named We Brought</h1>
+            <h3>A B C D E F G H I J K L M  N O P Q R S T U V W X Y  Z</h3>
+          </div>
           <a href="">Sale</a>
           <a href="">Activities</a>
         </div>
         <div id="right">
-          <a href="">Help & Support</a>
+          <a href="#" id="helpshutter">Help & Support</a>
+           <div id="help-shuttering">
+            <ul>
+              <li>Return Options</li>
+              <li>Get Help</li>
+              <li>FAQs</li>
+              <li>Give Us Feedback</li>
+            </ul>
+           </div>
         </div>
       </div>
     </header>
@@ -196,8 +256,8 @@
     </figure>
     
 
-      </body>
-  <script src="./scripts/navbar.js" type="module"></script>
-  <script src="./scripts/index.js"></script>
+   </body>
   
+  <script src="./scripts/index.js" type="module"></script>
+  <script src="./scripts/baseurl.js" type="module"></script>
 </html>

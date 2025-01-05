@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header > p{
+    text-align: center;
+    margin:10px;
+    font-size:3rem ;
+    font-weight: bolder;
+    background-color:rgb(222, 184, 135) ;
+    color: rgb(230, 45, 45);
+    border: 2px solid rgb(216, 226, 67);
+}
+#products-container  {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 30px;
+    gap:10px;
+}
+.product-card{
+    background-color: rgb(218, 204, 231);
+     padding: 20px;
+     text-align: center;
+
+}
+.product-card img{
+    width:400px;
+    height:500px;
+
+}
+.product-card button{
+    width:150px ;
+    cursor: pointer;
+    margin:10px 20px 5px 10px;
+    height:30px;
+    border-radius: 5px; 
+    background-color:rgb(59, 170, 59);
+    color: rgb(14, 51, 3);
+    font-weight: bolder;
+}
+.product-card button:hover{
+    width:180px;
+    height:35px;
+    background-color: rgb(133, 30, 230);
+}

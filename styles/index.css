@@ -45,43 +45,50 @@ button i{
     gap:30px;
     padding: 10px;
 }
-.user , .user-cart .user-wishlist{
+.user , .user-cart , .user-wishlist{
     font-size: 1.8rem;
 }
 /* Modal Background */
 #user-modal {
-    
+    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
+    transform: translateY(-50%);
+    top:50%;
+    right:0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 1000; /* Ensure it's above everything else */
-    justify-content: center;
-    align-items: center;
-  }
+    justify-content: flex-end;
+    background: rgba(0, 0, 0, 0.5);  /*Semi-transparent background */
+    z-index: 100; /* Ensure it's above everything else */
+}
   
   /* Modal Content */
   #user-modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 300px;
+    background-color: rgb(243, 250, 250);
+    padding: 30px;
+    border-radius:5px;
+    width: 700px;
     position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow:  4px 8px rgb(224, 222, 222) ;
   }
-  
+  #btn-area{
+    display:grid;
+    grid-template-rows: repeat(4,1fr);
+    gap:10px;
+    
+    
+  }
   /* Close Button */
   #close-user-modal {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 20px;
+    font-size:20px;
     font-weight: bold;
     cursor: pointer;
     color: #333;
+    border-radius: 20%;
+    border:1px solid black;
   }
 #nav-links{
     display: flex;
@@ -100,37 +107,166 @@ button i{
       font-weight:bold ;
 }
 #nav-links a:hover{
-    color:red;
+    color:white;
+    background-color: #333;
+    border-radius: 10px;
 }
-.shutter-new{
-    position: fixed;
-    top:0;
-    left:100%;
-    width:70%;
-    height:100%;
-    background:rgb(233, 179, 179);
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    transition:transform 0.5s ease-in-out, left 0.5s ease-in-out ;
-    z-index: 10;
+/*new shutter*/
+#new-shuttering{
+    position:fixed;
+    top:150px;
+    /*Initial position will be off-screen*/
+    left:0;
+    height:0;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    display: none;
+    background-color: rgb(201, 197, 197);
 }
-.shutter-new.open{
-    left:30%;
+#new-shuttering.active{
+    display:grid;
+   height:300px;
+   padding:20px;
+   margin:20px;
+   border: 2px solid grey ;
+
 }
-.new-content{
-    text-align: center;
+/*Women shutter*/
+#women-shuttering{
+    position:fixed;
+    top:150px;
+    /*Initial position will be off-screen*/
+    left:0;
+    height:0;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    display: none;
+    background-color: rgb(201, 197, 197);
 }
-.new-content a{
+#women-shuttering.active{
+    display:grid;
+   height:300px;
+   padding:20px;
+   margin:20px;
+   border: 2px solid grey ;
+
+}
+/*men shutter*/
+#men-shuttering{
+    position:fixed;
+    top:150px;
+    /*Initial position will be off-screen*/
+    left:0;
+    height:0;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    display: none;
+    background-color: rgb(201, 197, 197);
+}
+#men-shuttering.active{
+    display:grid;
+   height:300px;
+   padding:20px;
+   margin:20px;
+   border: 2px solid grey ;
+
+}
+/*kids shutter*/
+#kids-shuttering{
+    position:fixed;
+    top:150px;
+    /*Initial position will be off-screen*/
+    left:0;
+    height:0;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    display: none;
+    
+}
+#kids-shuttering.active{
+    display:grid;
+   height:300px;
+   padding:20px;
+   margin:20px;
+   border: 2px solid rgb(252, 167, 180) ;
+   background-color:rgb(252,167,180) ;
+
+}
+/*Collection shutter*/
+#collection-shuttering{
+    position:fixed;
+    top:150px;
+    /*Initial position will be off-screen*/
+    left:0;
+    height:0;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    display: none;
+    
+}
+#collection-shuttering.active{
+    display:grid;
+   height:300px;
+   padding:20px;
+   margin:20px;
+   border: 2px solid rgb(247, 96, 119) ;
+   background-color:rgb(252,167,180) ;
+
+}
+/*brand shutter*/
+#brand-shuttering{
+    position:fixed;
+    top:150px;
+    /*Initial position will be off-screen*/
+    left:0;
+    height:0;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    display: none;
+    
+}
+#brand-shuttering.active{
+    display:grid;
+   height:200px;
+   padding:20px;
+   margin:20px;
+   border: 2px solid rgb(247, 96, 119) ;
+   background-color:rgb(252,167,180) ;
+
+}
+/*help shutter*/
+#help-shuttering{
+    position:absolute;
+    top:160px;
+    /*Initial position will be off-screen*/
+    right:0;
+    width: 200px;
+    height:0;
+    overflow: hidden;
+    padding: 0;
+    transition: height 0.5s ease-in-out;
+    z-index: 1000;
+    display: none;
+    background-color: rgb(201, 197, 197);
+
+}
+ #help-shuttering.active{
+    height:100px;
+    padding:20px;
     display: block;
-    margin: 10px 0;
-    text-decoration: none;
-    font-size: 18px;
-}
-.new-content a:hover{
-    text-decoration:solid;
-    color:rgb(228, 166, 112)
+    margin: 20px;
 }
 h2{
     margin: 20px 0px 0px 10px;

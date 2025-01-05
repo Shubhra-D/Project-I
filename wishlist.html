@@ -4,9 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My wishlist</title>
+    <script
+      src="https://kit.fontawesome.com/ba85bd6452.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+        #wish-navbar{
+            display:flex;
+            justify-content: space-between;
+            height:100px;
+            align-items: center;
+        }
+        #used-icons{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap:30px;
+            font-size: 1.8rem;
+            padding: 20px;
+
+        }
+    .product-card{
+    background-color: rgb(218, 204, 231);
+     padding: 20px;
+     text-align: center;
+
+}
+.product-card img{
+    width:400px;
+    height:500px;
+
+}
+.product-card button{
+    width:150px ;
+    cursor: pointer;
+    margin:10px 20px 5px 10px;
+    height:30px;
+    border-radius: 5px; 
+    background-color:rgb(59, 170, 59);
+    color: rgb(14, 51, 3);
+    font-weight: bolder;
+}
+.product-card button:hover{
+    width:180px;
+    height:35px;
+    background-color: rgb(133, 30, 230);
+}
+
+    </style>
 </head>
 <body>
-    
+    <div id="wish-navbar">
+        <div>
+          <img
+          src="https://m.media-amazon.com/images/G/01/Zappos/25th-birthday-logo/Zappos-25-Years-Logo-Site.svg"
+          alt="logo"/>
+        </div>
+        <div id="used-icons">
+            <a class="user" href=""><i class="fa-solid fa-user"></i></a>
+            <a href="cart.html" class="user-cart"><i class="fa-solid fa-bag-shopping"></i></a>
+
+        </div>
+    </div>
+    <div id="wishlist-cont"></div>
 </body>
-<script src="./scripts/navbar.js"></script>
-</html>
+<script src="./scripts/wishlist.js" type="module"></script>
+<script src="./scripts/baseurl.js" type="module"></script>
+</html> 

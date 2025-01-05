@@ -6,8 +6,42 @@
     <title>Your Cart</title>
 </head>
 <body>
-    
+    <div id="cart-cont"></div>
 </body>
-<script src="./scripts/navbar.js"></script>
+<script>
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("cart-cont");
+
+  // Retrieve product data from LocalStorage
+  const storedProducts = Object.keys(localStorage)
+    .filter((key) => key.startsWith("product-"))
+    .map((key) => JSON.parse(localStorage.getItem(key)));
+
+  // Create HTML elements for each product
+  storedProducts.forEach((products) => {
+    const productCard = document.createElement("div");
+    productCard.className = "product-card";
+
+    const productImage = document.createElement("img");
+    productImage.src = products.image;
+    productImage.alt = products.name;
+
+    const productName = document.createElement("h3");
+    productName.textContent = products.name;
+
+    const productPrice = document.createElement("p");
+    productPrice.textContent = `Price: ${products.price}`;
+
+    const productDescription = document.createElement("p");
+    productDescription.textContent = products.discription;
+
+    productCard.appendChild(productImage,productDescription,productName,productPrice);
+
+    container.appendChild(productCard);
+  });
+});
+
+</script>
 </html>

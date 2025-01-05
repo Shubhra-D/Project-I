@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+<style>
+    #user-form-cont{
+    background-color: rgb(228, 126, 146);
+    margin: 20px;
+    align-content: center;
+    text-align: center;
+    padding: 10px;
+}
+   #loginForm{
+      margin: 20px;
+   }
+   #loginForm button{
+        background-color: rgb(48, 207, 48);
+        height:30px;
+        border-radius: 5px;
+        border: none;
+        width: 200px;
+        text-align: center;
+
+   }
+</style>
+</head>
+<body>
+    <div id="user-form-cont">
+        <div class="form-container">
+            <h2>Login Please.....</h2>
+            <form id="loginForm">
+              <input type="email" id="loginEmail" placeholder="Email" required>
+              <input type="password" id="loginPassword" placeholder="Password" required>
+              <button type="submit">Login</button>
+            </form>
+            <a href="signup.html" id="goToSignUp">Don't have an account? Sign Up</a>
+        </div>
+    </div>
+</body>
+<script src="./scripts/index.js" type="module"></script>
+
+</html>
