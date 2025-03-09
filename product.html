@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Winter Styles</title>
-  <link rel="stylesheet" href="./styles/product.css"> 
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Winter Styles</title>
+    <link rel="stylesheet" href="./styles/product.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <script
+      src="https://kit.fontawesome.com/ba85bd6452.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div id="icons">
+        <img
+          src="https://m.media-amazon.com/images/G/01/Zappos/25th-birthday-logo/Zappos-25-Years-Logo-Site.svg"
+          alt="logo"
+        />
+      </div>
+      <div>
+        <a href="wishlist.html" class="user-wishlist"
+          ><i class="fa-solid fa-heart"></i
+        ></a>
+        <a href="cart.html" class="user-cart"
+          ><i class="fa-solid fa-bag-shopping"></i
+        ></a>
+      </div>
+    </header>
+    <div id="labels">
+      <label for="category-filter"><i class="fa-solid fa-filter" style="color: rgb(60, 171, 185);"></i>Filter by Category:</label>
+      <select id="category-filter">
+          <option value="">All Categories</option>
+          <option value="shoes">Shoes</option>
+          <option value="Gloves">Gloves</option>
+          <option value="dress">Dress</option>
+          <option value="cord-set">Cord-set</option>
+          <option value="jacket">Jacket</option>
+        </select>
+       
+      <label for="sort-select"><i style="color: rgb(35, 129, 184);" class="fa-solid fa-arrow-up-wide-short"></i>Sort by Price:</label>
+      <select id="sort-select">
+          <option value="low-to-high">Low to High</option>
+          <option value="high-to-low">High to Low</option>
+      </select>
+  </div>
     
-  <header>
-    <p> Winter's Game changer Styles</p>
-  </header>
-  <main>
-    <div id="products-container">
-      
+    <main>
+      <div id="products-container"></div>
+      <div id="page-btn">
+        <button id="prev-button">Previous</button>
+        <button id="next-button">Next</button>
     </div>
-  </main>
-  
-</body>
-<script src="./scripts/products.js" type="module"></script>
-
+    </main>
+  </body>
+  <script src="./scripts/products.js" type="module"></script>
 </html>

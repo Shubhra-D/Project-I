@@ -2,6 +2,54 @@
     margin: 0;
     padding: 0;
 }
+#labels{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;;
+    gap:10px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: rgba(0,0,0,0.35)  0px 2px;
+    background-color:rgb(180, 226, 100);
+}
+label{
+    margin: 10px;
+    padding:10px ;
+}
+select{
+    border-radius: 8px;
+    border: none;
+    font-weight:500;
+    background-color:rgb(84, 126, 11) ;
+    color:white;
+    height: 25px;
+}
+#page-btn{
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+   
+}
+#page-btn button{
+    background-color:rgb(191, 219, 143) ;
+    color:black;
+}
+ 
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    margin-top: 10px;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 10px;
+
+}
+header a{
+     padding-left: 20px;
+     padding-right: 20px;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+}
 header > p{
     text-align: center;
     margin:10px;
@@ -16,20 +64,21 @@ header > p{
     grid-template-columns: repeat(3,1fr);
     margin-top: 30px;
     gap:10px;
+    width: auto;
 }
 .product-card{
-    background-color: rgb(218, 204, 231);
+    background-color: rgb(246, 245, 247);
      padding: 20px;
      text-align: center;
-
+    box-shadow: rgba(0,0,0,0.55) 0px 5px 15px;
 }
 .product-card img{
-    width:400px;
+    width: 400px;
     height:500px;
 
 }
-.product-card button{
-    width:150px ;
+ button{
+    width:120px ;
     cursor: pointer;
     margin:10px 20px 5px 10px;
     height:30px;
@@ -37,9 +86,37 @@ header > p{
     background-color:rgb(59, 170, 59);
     color: rgb(14, 51, 3);
     font-weight: bolder;
+    border:none;
 }
-.product-card button:hover{
-    width:180px;
-    height:35px;
+ button:hover{
+    width:150px;
+    height:32px;
     background-color: rgb(133, 30, 230);
+}
+#cart-cont{
+    margin: 10px;
+    padding: 10px;
+}
+.cart-item{
+   display: flex;
+   margin: 10px;
+}
+.cart-item > img{
+    width: 200px;
+    height: 300px;
+}
+
+.checkout-cont{
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 10px;
+    margin: 50px;
+    padding: 20px;
+    text-align: center;
+
+}
+#qr-code-container >img{
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+
 }

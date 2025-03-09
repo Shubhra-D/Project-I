@@ -1,79 +1,83 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const wishlistContainer = document.getElementById("wishlist-cont");
 
-import { baseurl } from "./baseurl.js";
+  // Function to load wishlist from localStorage
+  const loadWishlist = () => {
+    wishlistContainer.innerHTML = ""; // Clear previous content
+    let wishlistItems = [];
 
-document.addEventListener("DOMContentLoaded",()=>{
-    const addToWishlistButton = document.getElementById("add-wish");
-addToWishlistButton.addEventListener('click', async () => {
-    const productId = addToWishlistButton.dataset.productId;
-  
-    try {
-      const response = await fetch(`${baseurl}/products/${productId}`, {
-        method: 'GET',
-        headers: {
-          "content-type": "application/json"
-        }
-      });
-  
-      if (response.ok) {
-        const product = await response.json();
-        console.log('Product retrieved successfully!');
-  
-        // Create a new wishlist item element
-        const wishlistItemElement = document.createElement('div');
-        wishlistItemElement.innerHTML = `
-              <img src="${products.image}" alt="${products.name}" class="product-image">
-              <h3>${products.name}</h3>
-              <p>${products.discription}</p>
-              <p>Price: $${products.price}</p>
-              <p>Stock: ${products.stock}</p>
-              <button class="buy-now" data-id="${products.id}">Buy Now</button>
-              <button class="add-cart" data-id="${products.id}">Add To Cart</button>
-              
-                  `;
-  
-        // Add the wishlist item to the container
-        wishlistContainer.appendChild(wishlistItemElement);
-      } else {
-        console.error('Error retrieving product:', response.status);
+    // Retrieve all wishlist items from localStorage
+    for (let key in localStorage) {
+      if (key.startsWith("wishlist-")) {
+        let product = JSON.parse(localStorage.getItem(key));
+        wishlistItems.push(product);
       }
-    } catch (error) {
-      console.error('Error retrieving product:', error);
     }
-  });
-  
-  
-  
-  
-})
 
-async function fetchProducts() {
-    try {
-      const response = await fetch(`${baseurl}/products`);
-      if (!response.ok) throw new Error(`Error: ${response.status}`);
-      const products = await response.json();
-      console.log(products); // Display products in console
-    } catch (error) {
-      console.error('Failed to fetch products:', error);
+    if (wishlistItems.length === 0) {
+      wishlistContainer.innerHTML = "<p>Your wishlist is empty.</p>";
+      return;
     }
-  }
-  
-  fetchProducts();
-    
 
-  //wishlist button working
-  async function addToWishlist(productId){
-    const res = await fetch(`${baseurl}/products`,{
-      method:"POST",
-      headers:{
-        "content-type":"application/JSON"
-      },
-      body:JSON.stringify({productId})
+    // Display wishlist items
+    wishlistItems.forEach((item) => {
+      const itemElement = document.createElement("div");
+      itemElement.className = "wish-card"
+      itemElement.classList.add("wishlist-item");
+      itemElement.innerHTML = `
+              <img src="${item.image}" alt="${item.name}" class="wishlist-image">
+              <h3>${item.name}</h3>
+              <p>${item.discription}</p>
+              <p>Price: $${item.price}</p>
+              <button class="add-to-cart" data-id="${item.id}"> Add Cart</button>
+              <button class="buy-now" data-id="${item.id}">Buy Now</button>
+              <button class="remove-wish" data-id="${item.id}"><i class="fa-regular fa-trash-can"></i>Remove</button>
+          `;
+      wishlistContainer.appendChild(itemElement);
     });
-    const data = await res.json();
-    if(res.ok){
-      alert("Added to Wishlist")
-    }else{
-      alert("err adding product")
+  };
+
+  // Function to remove item from wishlist
+  wishlistContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove-wish")) {
+      const productId = e.target.dataset.id;
+      localStorage.removeItem(`wishlist-${productId}`);
+      loadWishlist(); // Refresh the wishlist display
     }
-  }
-  
+    //buying logic
+    if (e.target.classList.contains("buy-now")) {
+      const product = JSON.parse(localStorage.getItem(`wishlist-${productId}`));
+      const productId = e.target.dataset.id; //defining the productId
+
+      if (product) {
+        // Store the product in localStorage for checkout
+        localStorage.setItem("checkout-product", JSON.stringify(product));
+
+        // Redirect to checkout page (modify URL as needed)
+        window.location.href = "checkout.html";
+      }
+    }
+    //Adding to the cart logic
+    if (e.target.classList.contains("add-to-cart")) {
+        const productId = e.target.dataset.id;
+        const product = JSON.parse(localStorage.getItem(`wishlist-${productId}`));
+    
+        if (product) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            
+            // Check if the item is already in the cart
+            if (!cart.some((item) => item.id === product.id)) {
+                cart.push(product);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert("Item added to cart!");
+            } else {
+                alert("Item is already in your cart.");
+            }
+        }
+    }
+    
+  });
+
+  // Load wishlist when page loads
+  loadWishlist();
+});

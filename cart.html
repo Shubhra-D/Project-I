@@ -1,47 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Cart</title>
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/product.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <script
+      src="https://kit.fontawesome.com/ba85bd6452.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #cart-cont {
+        margin: 10px 20px 10px 20px;
+      }
+      .product-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 10px 10px 25px ;
+      }
+      .total-cont{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        padding: 10px;
+        box-shadow: rgba(0,0 ,0 , 0.45) 0px 5px 10px;
+       
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div id="icons">
+        <img
+          src="https://m.media-amazon.com/images/G/01/Zappos/25th-birthday-logo/Zappos-25-Years-Logo-Site.svg"
+          alt="logo"
+        />
+      </div>
+      <div>
+        <a href="wishlist.html" class="user-wishlist"
+          ><i class="fa-solid fa-heart"></i
+        ></a>
+      </div>
+    </header>
     <div id="cart-cont"></div>
-</body>
-<script>
+    <div class="total-cont">
+      <div id="total-price"></div>
+      <button id="checkout-btn" style="display: none">Continue</button>
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartContainer = document.getElementById("cart-cont");
+      const totalPriceContainer = document.getElementById("total-price");
+      const checkoutBtn = document.getElementById("checkout-btn");
 
+      const loadCart = () => {
+        cartContainer.innerHTML = ""; // Clear previous content
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("cart-cont");
+        if (cartItems.length === 0) {
+          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+          totalPriceContainer.innerHTML = ""; // Hide total price if empty
+          checkoutBtn.style.display = "none"; // Hide checkout button
+          return;
+        }
 
-  // Retrieve product data from LocalStorage
-  const storedProducts = Object.keys(localStorage)
-    .filter((key) => key.startsWith("product-"))
-    .map((key) => JSON.parse(localStorage.getItem(key)));
+        let totalPrice = 0;
 
-  // Create HTML elements for each product
-  storedProducts.forEach((products) => {
-    const productCard = document.createElement("div");
-    productCard.className = "product-card";
+        cartItems.forEach((item) => {
+          console.log("Item Data", item);
+          let itemPrice = parseFloat(item.price.replace("$", "")); // Convert price to number
+          if (!isNaN(itemPrice) && itemPrice > 0) {
+            totalPrice += itemPrice; // Only add if it's a valid number
+          } else {
+            console.log("Invalid Price", item.price);
+          }
+          const itemElement = document.createElement("div");
+          itemElement.classList.add("cart-item");
+          itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart-image">
+                <div class="product-content">
+                  <h3>${item.name}</h3>
+                  <p>${item.discription}</p>
+                  <p>Price: ${item.price}</p>
+                  <button class="buy-now" data-id="${item.id}">Buy Now</button>
+                  <button class="remove-cart" data-id="${item.id}"><i class="fa-regular fa-trash-can"></i>Remove</button>
+                  
+                </div>
 
-    const productImage = document.createElement("img");
-    productImage.src = products.image;
-    productImage.alt = products.name;
+            `;
+          cartContainer.appendChild(itemElement);
+        });
 
-    const productName = document.createElement("h3");
-    productName.textContent = products.name;
+        console.log("Totol Price", totalPrice);
 
-    const productPrice = document.createElement("p");
-    productPrice.textContent = `Price: ${products.price}`;
+        // Update Total Price
+        totalPriceContainer.innerHTML = `<h3>Total Price: $${totalPrice.toFixed(
+          2
+        )}</h3>`;
+        checkoutBtn.style.display = "block"; // Show checkout button
+      };
 
-    const productDescription = document.createElement("p");
-    productDescription.textContent = products.discription;
+      // Event listener for Remove & Buy Now buttons
+      cartContainer.addEventListener("click", (e) => {
+        const productId = e.target.dataset.id;
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-    productCard.appendChild(productImage,productDescription,productName,productPrice);
+        // Remove Item
+        if (e.target.classList.contains("remove-cart")) {
+          cartItems = cartItems.filter((item) => item.id !== productId);
+          localStorage.setItem("cart", JSON.stringify(cartItems));
+          loadCart(); // Refresh cart display
+        }
 
-    container.appendChild(productCard);
-  });
-});
+        // Buy Now Functionality
+        if (e.target.classList.contains("buy-now")) {
+          const product = cartItems.find((item) => item.id === productId);
 
-</script>
+          if (product) {
+            localStorage.setItem("checkout-product", JSON.stringify(product));
+            window.location.href = "checkout.html"; // Redirect to checkout
+          }
+        }
+      });
+
+      // Continue to Checkout (All Cart Items)
+      checkoutBtn.addEventListener("click", () => {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (cartItems.length > 0) {
+          localStorage.setItem("checkout-cart", JSON.stringify(cartItems)); // Store all cart items for checkout
+          window.location.href = "checkout.html"; // Redirect to checkout
+        }
+      });
+
+      loadCart(); // Load cart items on page load
+    });
+  </script>
 </html>

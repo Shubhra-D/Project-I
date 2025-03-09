@@ -2,6 +2,10 @@
     margin: 0;
     padding:0;
 }
+a{
+    text-decoration: none;
+}
+
 #first{
    background-color:#87c2f3 ;
    padding: 10px;
@@ -28,6 +32,7 @@
 button i{
     cursor: pointer;
     font-size: 1.3rem;
+    border: none;
 }
 #search-panel i {
     position :absolute;
@@ -123,6 +128,7 @@ button i{
     padding: 0;
     transition: height 0.5s ease-in-out;
     display: none;
+    color: rgb(97, 97, 97);
     background-color: rgb(201, 197, 197);
 }
 #new-shuttering.active{
@@ -131,7 +137,7 @@ button i{
    padding:20px;
    margin:20px;
    border: 2px solid grey ;
-
+   border-radius: 12px;
 }
 /*Women shutter*/
 #women-shuttering{
@@ -145,6 +151,7 @@ button i{
     padding: 0;
     transition: height 0.5s ease-in-out;
     display: none;
+    color: rgb(97, 97, 97);
     background-color: rgb(201, 197, 197);
 }
 #women-shuttering.active{
@@ -153,7 +160,7 @@ button i{
    padding:20px;
    margin:20px;
    border: 2px solid grey ;
-
+   border-radius: 12px;
 }
 /*men shutter*/
 #men-shuttering{
@@ -167,6 +174,7 @@ button i{
     padding: 0;
     transition: height 0.5s ease-in-out;
     display: none;
+    color: rgb(97, 97, 97);
     background-color: rgb(201, 197, 197);
 }
 #men-shuttering.active{
@@ -175,7 +183,7 @@ button i{
    padding:20px;
    margin:20px;
    border: 2px solid grey ;
-
+   border-radius: 12px;
 }
 /*kids shutter*/
 #kids-shuttering{
@@ -189,16 +197,16 @@ button i{
     padding: 0;
     transition: height 0.5s ease-in-out;
     display: none;
-    
+    color: rgb(97, 97, 97);
 }
 #kids-shuttering.active{
     display:grid;
    height:300px;
    padding:20px;
    margin:20px;
-   border: 2px solid rgb(252, 167, 180) ;
-   background-color:rgb(252,167,180) ;
-
+   border: 2px solid rgb(201, 197, 197) ;
+   background-color:rgb(201, 197, 197) ;
+   border-radius: 12px;
 }
 /*Collection shutter*/
 #collection-shuttering{
@@ -212,16 +220,16 @@ button i{
     padding: 0;
     transition: height 0.5s ease-in-out;
     display: none;
-    
+    color: rgb(97, 97, 97);
 }
 #collection-shuttering.active{
     display:grid;
    height:300px;
    padding:20px;
    margin:20px;
-   border: 2px solid rgb(247, 96, 119) ;
-   background-color:rgb(252,167,180) ;
-
+   border: 2px solid rgb(201, 197, 197) ;
+   background-color:rgb(201, 197, 197) ;
+   border-radius: 12px;
 }
 /*brand shutter*/
 #brand-shuttering{
@@ -232,6 +240,7 @@ button i{
     height:0;
     z-index: 1000;
     overflow: hidden;
+    color: rgb(97, 97, 97);
     padding: 0;
     transition: height 0.5s ease-in-out;
     display: none;
@@ -242,9 +251,9 @@ button i{
    height:200px;
    padding:20px;
    margin:20px;
-   border: 2px solid rgb(247, 96, 119) ;
-   background-color:rgb(252,167,180) ;
-
+   border: 2px solid rgb(201, 197, 197);
+   background-color:rgb(201, 197, 197) ;
+   border-radius: 12px;
 }
 /*help shutter*/
 #help-shuttering{
@@ -259,6 +268,7 @@ button i{
     transition: height 0.5s ease-in-out;
     z-index: 1000;
     display: none;
+    color: rgb(97, 97, 97);
     background-color: rgb(201, 197, 197);
 
 }
@@ -266,7 +276,9 @@ button i{
     height:100px;
     padding:20px;
     display: block;
+
     margin: 20px;
+    border-radius: 12px;
 }
 h2{
     margin: 20px 0px 0px 10px;
@@ -382,7 +394,7 @@ figure{
     padding:20px;
     gap:15px;
     margin: 50px 20px 20px 20px;
-    background-color:#fdfeff;
+    background-color: #757171;
     border:2px solid white;
     box-shadow: 2px 2px #d1dde9;
 
@@ -391,5 +403,168 @@ figure img{
     width:800px;
     height:500px;
     cursor: pointer;
+    border-radius: 10px;
     
 }
+.hamburger {
+    display: none;  /* Hide by default */
+}
+#prevBtn, #nextBtn {
+    display: none;
+}
+/* Responsive Design */
+@media (min-width:320px) and (max-width: 1023px) {
+    #icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #search-panel {
+        width: 75%;
+    }
+
+    .search-bar {
+        width: 90%;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        margin-top: 30px;
+    }
+
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 200px;
+        border: 1px solid #ddd;
+        padding: 15px;
+    }
+
+    .mobile-menu a {
+        display: block;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .mobile-menu.active {
+        display: flex;
+    }
+    #left{
+        font-size: small;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:5px;
+
+    }
+    #right{
+        font-size: small;
+        text-align: end;
+    }
+    .slider-container {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+    #portfolio {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        text-align: center;
+    }
+    #portfolio img{
+        border: none;
+        box-shadow: none;
+        width: 250px;
+        height: 250px;
+    }
+    .slide {
+        min-width: 100vh; /* Show only one image at a time */
+        transition: transform 0.5s ease-in-out;
+        box-sizing: border-box;
+    }
+
+    /* Show slider buttons */
+    #prevBtn, #nextBtn {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    #prevBtn {
+        left: 10px;
+        margin-top: 5px;
+    }
+
+    #nextBtn {
+        right: 10px;
+        margin-top: 5px;
+    }
+    article{
+        display: flex;
+        flex-direction: column;
+    }
+    #cont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px;
+        padding: 10px;
+        align-items: center;
+        background-color: #BDC8D4;
+
+    }
+    #with-price{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px;
+        padding: 10px;
+        align-items: center;
+        background-color: #BDC8D4; 
+    }
+    .full-data-card{
+        border: 1px solid #6799ce;
+        margin: 10px;
+    }
+    .full-data-card>p{
+        font-weight: bolder;
+    }
+    figure{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    figure img{
+        max-width: 400px;
+        height: 400px;
+    }
+    .text-figure{
+        color:rgb(193, 212, 121);
+    }
+    
+
+         
+}
+
+
+

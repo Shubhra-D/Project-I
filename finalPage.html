@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Page</title>
+    <style>
+       div{
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+       }
+      div>img{
+        width: 300px;
+        height: 300px;
+      }
+      button{
+        width: 150px;
+        height: 30px;
+        border: none;
+        background-color: rgb(78, 194, 78);
+        border-radius: 8px;
+        color:white;
+        font-weight: bolder;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./Assests/Images/gif/icons8-tick.gif" alt="green-tick-gif"/>
+        <h3>Order Placed Successfully...</h3>
+        <button id="home-button">Continue Shopping</button>
+    </div>
+    
+</body>
+<script>
+    document.getElementById("home-button").addEventListener("click",()=>{
+        window.location.href="index.html"
+    })
+</script>
+</html>

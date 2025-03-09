@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout page</title>
+    <link rel="stylesheet" href="./styles/product.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <script
+      src="https://kit.fontawesome.com/ba85bd6452.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <div class="checkout-cont">
+        <div id="total-price"></div>
+       <button id="cod-button"><i class="fa-regular fa-handshake"></i>Cash on Delivery</button>
+        <button id="qr-button"><i class="fas fa-qrcode"></i>Pay via QR Code</button>
+      <div id="qr-code-container" style="display: none;">
+         <img src="./Assests/Images/QRcode.jpeg" alt="scanner"/>
+      </div>
+    </div>
+
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const totalPriceElement = document.getElementById("total-price");
+    const codButton = document.getElementById("cod-button");
+    const qrCodeButton = document.getElementById("qr-button");
+    const qrCodeContainer = document.getElementById("qr-code-container");
+
+    // Get cart items & "Buy Now" product from LocalStorage
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    let buyNowItem = JSON.parse(localStorage.getItem("checkout-product"));
+
+    let selectedItems = [];
+
+    if (buyNowItem) {
+        // If "Buy Now" was clicked, show only that item
+        selectedItems = [buyNowItem];
+    } else if (cartItems.length > 0) {
+        // Otherwise, show cart items
+        selectedItems = cartItems;
+    }
+
+    if (selectedItems.length === 0) {
+        totalPriceElement.innerHTML = "<h3>Your cart is empty.</h3>";
+        codButton.style.display = "none";
+        qrCodeButton.style.display = "none";
+        return;
+    }
+
+    // Calculate total price
+    let totalPrice = selectedItems.reduce((sum, item) => {
+        let itemPrice = parseFloat(item.price.replace("$", "")); // Convert price correctly
+        return sum + (isNaN(itemPrice) ? 0 : itemPrice);
+    }, 0);
+
+    totalPriceElement.innerHTML = `<h2>Total Price: $${totalPrice.toFixed(2)}</h2>`;
+
+    // Cash on Delivery
+    codButton.addEventListener("click", () => {
+        alert("Order Confirmed! Pay on delivery.");
+        localStorage.removeItem("cart"); // Clear cart after checkout
+        localStorage.removeItem("checkout-product"); // Clear Buy Now item
+        window.location.href = "finalPage.html"; // Redirect to success page
+    });
+
+    // Show QR Code for Payment
+    qrCodeButton.addEventListener("click", () => {
+        qrCodeContainer.style.display = "block";
+    });
+});
+
+</script>
+</html>

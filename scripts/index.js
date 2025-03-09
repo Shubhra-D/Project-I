@@ -1,165 +1,146 @@
-
 import { baseurl } from "./baseurl.js";
 
-
-
-//shuttering of new
-const newShutter = document.getElementById("newshutter");
-  const newbox = document.getElementById("new-shuttering");
-
-  newShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     newbox.classList.toggle("active");
-  });
-
-  //shuttering women
-  const womenShutter = document.getElementById("womenshutter");
-  const womenbox = document.getElementById("women-shuttering");
-
-  womenShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     womenbox.classList.toggle("active");
-  });
-//shuttering of men
-const menShutter = document.getElementById("menshutter");
-  const menbox = document.getElementById("men-shuttering");
-
-  menShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     menbox.classList.toggle("active");
-  });
-//shuttering of kids
-const kidsShutter = document.getElementById("kidsshutter");
-  const kidsbox = document.getElementById("kids-shuttering");
-
-  kidsShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     kidsbox.classList.toggle("active");
-  });
-  //Collection Shutter
-  const collectionShutter = document.getElementById("collectionshutter");
-  const collectionbox = document.getElementById("collection-shuttering");
-
-  collectionShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     collectionbox.classList.toggle("active");
-  });
-//brand shuttering
-const brandShutter = document.getElementById("brandshutter");
-  const brandbox = document.getElementById("brand-shuttering");
-
-  brandShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     brandbox.classList.toggle("active");
-  });
-
-
-  //Shuttering of help and support
-  const helpShutter = document.getElementById("helpshutter");
-  const helpbox = document.getElementById("help-shuttering");
-
-  helpShutter.addEventListener("click",(e)=>{
-     e.preventDefault()
-     helpbox.classList.toggle("active");
-  });
-
-
-//Modal code of user/login /sign up page
 document.addEventListener("DOMContentLoaded", () => {
-    const userIcon = document.querySelector("#side-icons .user");
+    // Get modal and buttons
     const userModal = document.getElementById("user-modal");
-    console.log(userModal)
-    const closeModal = document.getElementById("close-user-modal");
+    const userIcon = document.querySelector(".user");
+    const closeUserModal = document.getElementById("close-user-modal");
+    const signupForm = document.getElementById("signup-form");
+    const loginForm = document.getElementById("loginForm");
+    
 
-    //console.log(userIcon, userModal, closeModal);
+    // Open modal
+    if (userIcon) {
+        userIcon.addEventListener("click", (event) => {
+            event.preventDefault();
+            userModal.style.display = "block";
+        });
+    }
 
-    userIcon.addEventListener("click", (event) => {
-      event.preventDefault();
-      console.log("User icon clicked");
-      userModal.style.display = "block";
-    });
+    // Close modal
+    if (closeUserModal) {
+        closeUserModal.addEventListener("click", () => {
+            userModal.style.display = "none";
+        });
+    }
 
-    closeModal.addEventListener("click", () => {
-      console.log("Close icon clicked");
-      userModal.style.display = "none";
-    });
-
+    // Close modal if clicking outside the content
     window.addEventListener("click", (event) => {
-      if (event.target === userModal) {
-        console.log("Clicked outside modal");
-        userModal.style.display = "none";
-      }
+        if (event.target === userModal) {
+            userModal.style.display = "none";
+        }
     });
-  });
 
 
-let formContainer = document.getElementById("user-form-cont");
-document.getElementById("signup").addEventListener("click",function(){
-   window.location.href="signup.html"
-  rendersignup();
+
+    // Handle Signup
+
+    
+    if (signupForm) {
+        signupForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById("username").value.trim();
+            const email = document.getElementById("useremail").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!name || !email || !password) {
+                alert("All fields are required!");
+                return;
+            }
+
+            const newUser = { name, email, password };
+
+            try {
+                // Fetch existing users
+                const response = await fetch(`${baseurl}users`);
+                const users = await response.json();
+
+                // Check if email already exists
+                const userExists = users.some(user => user.email === email);
+                if (userExists) {
+                    alert("User already exists! Please log in.");
+                    return;
+                }
+
+                // Save new user to db.json
+                await fetch(`${baseurl}users`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newUser),
+                });
+
+                alert("Signup successful! Redirecting to login...");
+                window.location.href = "login.html"; // Redirect to login
+            } catch (error) {
+                console.error("Error signing up:", error);
+                alert("An error occurred while signing up.");
+            }
+        });
+    }
+
+    // Handle Login
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("loginPassword").value.trim();
+
+            if (!email || !password) {
+                alert("Both fields are required!");
+                return;
+            }
+
+            try {
+                const response = await fetch(`${baseurl}users`);
+                const users = await response.json();
+
+                // Verify user credentials
+                const user = users.find(user => user.email === email && user.password === password);
+                if (user) {
+                    alert(`Welcome, ${user.name}!`);
+                    localStorage.setItem("loggedInUser", JSON.stringify(user)); // Store user data
+                    window.location.href = "index.html"; // Redirect to home page
+                } else {
+                    alert("Invalid credentials! Please try again.");
+                }
+            } catch (error) {
+                console.error("Login error:", error);
+                alert("An error occurred while logging in.");
+            }
+        });
+    }
+
+
+    
+    //SEARCH FUNCTIONALITY
+ const searchInput = document.querySelector(".search-bar");
+ const searchButton = document.querySelector(".search");
+
+ if (searchInput && searchButton) {
+     searchButton.addEventListener("click", function () {
+         const query = searchInput.value.trim();
+         if (query) {
+             console.log(`Searching for: ${query}`); // Debugging log
+             window.location.href = `product.html?query=${encodeURIComponent(query)}`;
+         }
+     });
+
+     searchInput.addEventListener("keypress", function (event) {
+         if (event.key === "Enter") {
+             searchButton.click();
+         }
+     });
+ } else {
+     console.log("Search elements not found!"); // Debugging log
+ }        
+   
+
 });
 
-const multiLogin = document.querySelectorAll(".login")
-  multiLogin.forEach((e)=>{
-        e.addEventListener("click",()=>{
-          userModal.style.display = "none";
-          renderLogin();
-      });
-    });
-
-
-  function rendersignup(){
-      document.getElementById("signup-form").addEventListener("submit",async(e)=>{
-       e.preventDefault();
-       const username = document.getElementById("username").value;
-       const email = document.getElementById("useremail").value;
-       const password = document.getElementById("password").value;
-         let userdata = {username,email,password}
-      try{
-        const res = await fetch((`${baseurl}users`), {
-          method: 'POST',
-          headers: { 
-            "Content-Type": "application/json" 
-          },
-          body: JSON.stringify(userdata),
-        });
-        const data = await res.json();
-        alert("Sign-Up Successful!"); 
-      }catch(err) {
-        console.log("err")
-      }
-
-   });
-
-
-
-   document.getElementById("bhejlogin").addEventListener('click', renderlogin);
-  }
-
-  function renderLogin() {
-
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
-
-      try {
-        const response = await fetch(`${baseurl}users`, {
-          method: 'POST',
-          headers: {
-             'Content-Type': 'application/json' 
-            },
-          body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-        alert('Login Successful!');
-      } catch (err) {
-        alert("err");
-      }
-    });
-
-    document.getElementById("bhejlogin").addEventListener('click', rendersignup);
-  }
 
 
 
@@ -172,16 +153,4 @@ const multiLogin = document.querySelectorAll(".login")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
